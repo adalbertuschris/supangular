@@ -31,7 +31,36 @@
             "prefix": "vt",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "no-multiple-empty-lines": ["warn", { "max": 1 }],
+        "no-redeclare": "warn",
+        "consistent-return": "warn",
+        "no-empty-function": ["warn", { "allow": ["constructors"] }],
+        "space-before-blocks": ["error", "always"],
+        "func-call-spacing": ["error", "never"],
+        "no-irregular-whitespace": ["error", { "skipStrings": true, "skipComments": true }],
+        "no-whitespace-before-property": "error",
+        "arrow-body-style": "warn",
+        "no-underscore-dangle": "off",
+        "no-shadow": "off",
+        "arrow-spacing": "error",
+        "block-spacing": "error",
+        "comma-spacing": "error",
+        "key-spacing": "error",
+        "keyword-spacing": "error",
+        "semi-spacing": "error",
+        "no-console": ["warn", { "allow": ["error"] }],
+        "no-debugger": "warn",
+        "no-param-reassign": "error",
+        "@typescript-eslint/no-explicit-any": "warn",
+        "@typescript-eslint/explicit-function-return-type": "warn",
+        "@typescript-eslint/no-inferrable-types": "error",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/no-use-before-define": "warn",
+        "@typescript-eslint/no-unused-vars": "warn",
+        "@typescript-eslint/naming-convention": "warn",
+        "@typescript-eslint/no-empty-interface": "warn"
       }
     },
     {
