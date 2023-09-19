@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
-import { SupabaseClient, User } from '@supabase/supabase-js';
+import { SupabaseClient } from '@supabase/supabase-js';
 import { ProfileUpsertRequest } from '../models/profile-upsert-request';
+import { fromSupabase } from 'src/app/core/supabase/rxjs/from-supabase';
+import { ProfileResponse } from '../models/profile-response';
+import { Observable } from 'rxjs';
+import { SupabasePayloadBuilder } from 'src/app/core/supabase/models/supabase-payload';
 
 @Injectable({
   providedIn: 'root'
@@ -8,16 +12,18 @@ import { ProfileUpsertRequest } from '../models/profile-upsert-request';
 export class ProfileApiService {
   constructor(private readonly supabaseClient: SupabaseClient) {}
 
-  profile(user: User) {
-    return this.supabaseClient.from('profiles').select(`username, website, avatar_url`).eq('id', user.id).single();
+  getProfile(userId: string): Observable<ProfileResponse> {
+    return fromSupabase<ProfileResponse>(this.supabaseClient.from('profiles').select(`*`).eq('id', userId).single());
   }
 
-  updateProfile(profile: ProfileUpsertRequest) {
+  updateProfile(profile: ProfileUpsertRequest): Observable<any> {
     const update = {
       ...profile,
-      updated_at: new Date()
+      updatedAt: new Date()
     };
 
-    return this.supabaseClient.from('profiles').upsert(update);
+    return fromSupabase(
+      this.supabaseClient.from('profiles').upsert(new SupabasePayloadBuilder({ fromObject: update }).getPayload())
+    );
   }
 }

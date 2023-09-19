@@ -21,7 +21,7 @@ export class AccountPageComponent {
     username: ''
   });
 
-  user: AuthUser;
+  user: AuthUser = null;
 
   constructor(
     private readonly authService: AuthService,
@@ -32,18 +32,22 @@ export class AccountPageComponent {
   }
 
   async ngOnInit(): Promise<void> {
-    await this.getProfile();
+    if (this.user) {
+      await this.getProfile(this.user.id);
 
-    const { username } = this.profile;
-    this.updateProfileForm.patchValue({
-      username
-    });
+      if (this.profile) {
+        const { username } = this.profile;
+        this.updateProfileForm.patchValue({
+          username
+        });
+      }
+    }
   }
 
-  async getProfile() {
+  async getProfile(userId: string) {
     try {
       this.loading = true;
-      const { data: profile, error, status } = await this.accountService.getProfile(this.user);
+      const { data: profile, error, status } = (await this.accountService.getProfile(userId)) as any;
 
       if (error && status !== 406) {
         throw error;
@@ -68,7 +72,7 @@ export class AccountPageComponent {
       const username = this.updateProfileForm.value.username as string;
 
       const { error } = await this.accountService.updateProfile({
-        id: this.user.id,
+        id: this.user?.id || '',
         username
       });
       if (error) throw error;

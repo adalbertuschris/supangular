@@ -1,0 +1,4 @@
+<p>home-page works!</p>
+<ng-container *ngIf="(userContext$ | async) as userContext">
+    Hello {{ userContext.firstName }}
+</ng-container>

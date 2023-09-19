@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ProfileApiService } from 'src/app/api/profiles/services/profile-api.service';
-import { AuthUser } from 'src/app/modules/auth/models/auth-user';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +7,8 @@ import { AuthUser } from 'src/app/modules/auth/models/auth-user';
 export class AccountService {
   constructor(private readonly profileApiService: ProfileApiService) {}
 
-  getProfile(user: AuthUser): any {
-    return this.profileApiService.profile(user);
+  getProfile(userId: string) {
+    return this.profileApiService.getProfile(userId);
   }
 
   updateProfile(profile: { id: string; username: string }): any {
