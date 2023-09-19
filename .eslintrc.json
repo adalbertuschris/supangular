@@ -1,13 +1,9 @@
 {
   "root": true,
-  "ignorePatterns": [
-    "projects/**/*"
-  ],
+  "ignorePatterns": ["projects/**/*"],
   "overrides": [
     {
-      "files": [
-        "*.ts"
-      ],
+      "files": ["*.ts"],
       "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
@@ -32,13 +28,29 @@
             "style": "kebab-case"
           }
         ],
-        "no-multiple-empty-lines": ["warn", { "max": 1 }],
+        "no-multiple-empty-lines": [
+          "warn",
+          {
+            "max": 1
+          }
+        ],
         "no-redeclare": "warn",
         "consistent-return": "warn",
-        "no-empty-function": ["warn", { "allow": ["constructors"] }],
+        "no-empty-function": [
+          "warn",
+          {
+            "allow": ["constructors"]
+          }
+        ],
         "space-before-blocks": ["error", "always"],
         "func-call-spacing": ["error", "never"],
-        "no-irregular-whitespace": ["error", { "skipStrings": true, "skipComments": true }],
+        "no-irregular-whitespace": [
+          "error",
+          {
+            "skipStrings": true,
+            "skipComments": true
+          }
+        ],
         "no-whitespace-before-property": "error",
         "arrow-body-style": "warn",
         "no-underscore-dangle": "off",
@@ -49,7 +61,12 @@
         "key-spacing": "error",
         "keyword-spacing": "error",
         "semi-spacing": "error",
-        "no-console": ["warn", { "allow": ["error"] }],
+        "no-console": [
+          "warn",
+          {
+            "allow": ["error"]
+          }
+        ],
         "no-debugger": "warn",
         "no-param-reassign": "error",
         "@typescript-eslint/no-explicit-any": "warn",
@@ -64,14 +81,13 @@
       }
     },
     {
-      "files": [
-        "*.html"
-      ],
-      "extends": [
-        "plugin:@angular-eslint/template/recommended",
-        "plugin:@angular-eslint/template/accessibility"
-      ],
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended", "plugin:@angular-eslint/template/accessibility"],
       "rules": {}
+    },
+    {
+      "files": ["*.ts"],
+      "extends": ["plugin:@ngrx/recommended"]
     }
   ]
 }
