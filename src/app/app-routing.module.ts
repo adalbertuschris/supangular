@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginPageComponent } from './modules/auth/pages/login-page/login-page.component';
 import { RegisterPageComponent } from './modules/auth/pages/register-page/register-page.component';
-import { AccountPageComponent } from './modules/account/pages/account-page/account-page.component';
 import { authGuard } from './modules/auth/guards/auth.guard';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { loginGuard } from './modules/auth/guards/login.guard';
+import { ProfilesModule } from './modules/profiles/profiles.module';
 
 const routes: Routes = [
   {
@@ -25,10 +25,9 @@ const routes: Routes = [
     canActivate: [loginGuard]
   },
   {
-    path: 'account',
-    loadComponent: () =>
-      import('./modules/account/pages/account-page/account-page.component').then(() => AccountPageComponent),
-    canMatch: [authGuard]
+    path: 'my-profile',
+    loadChildren: () => import('./modules/profiles/profiles.module').then(() => ProfilesModule),
+    canActivate: [authGuard]
   },
   {
     path: '**',

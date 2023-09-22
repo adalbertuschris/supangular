@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/modules/auth/services/auth.service';
 
 @Component({
@@ -9,5 +10,12 @@ import { AuthService } from 'src/app/modules/auth/services/auth.service';
 export class HomePageComponent {
   userContext$ = this.authService.userContext$;
 
-  constructor(private readonly authService: AuthService) {}
+  constructor(
+    private readonly authService: AuthService,
+    private readonly router: Router
+  ) {}
+
+  goToMyProfile(): void {
+    this.router.navigate(['/my-profile']);
+  }
 }

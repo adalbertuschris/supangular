@@ -1,11 +1,16 @@
 import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import { map } from 'rxjs';
+import { exhaustMap, map, skipWhile } from 'rxjs';
 
-// TODO Write tests
 export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
   const router = inject(Router);
+  const authService = inject(AuthService);
+  authService.checkAuth();
 
-  return inject(AuthService).isAuth$.pipe(map((isAuth) => (isAuth ? true : router.createUrlTree(['/login']))));
+  return authService.isCheckingAuth$.pipe(
+    skipWhile((isChecking) => isChecking),
+    exhaustMap(() => authService.isAuth$),
+    map((isAuth) => (isAuth ? true : router.createUrlTree(['/login'])))
+  );
 };

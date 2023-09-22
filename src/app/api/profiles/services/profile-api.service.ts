@@ -16,14 +16,19 @@ export class ProfileApiService {
     return fromSupabase<ProfileResponse>(this.supabaseClient.from('profiles').select(`*`).eq('id', userId).single());
   }
 
-  updateProfile(profile: ProfileUpsertRequest): Observable<any> {
-    const update = {
-      ...profile,
-      updatedAt: new Date()
+  updateProfile(id: string, model: ProfileUpsertRequest): Observable<ProfileResponse> {
+    const payload = {
+      ...model,
+      updatedAt: new Date().toISOString()
     };
 
-    return fromSupabase(
-      this.supabaseClient.from('profiles').upsert(new SupabasePayloadBuilder({ fromObject: update }).getPayload())
+    return fromSupabase<ProfileResponse>(
+      this.supabaseClient
+        .from('profiles')
+        .update(new SupabasePayloadBuilder({ fromObject: payload }).getPayload())
+        .eq('id', id)
+        .select()
+        .single()
     );
   }
 }

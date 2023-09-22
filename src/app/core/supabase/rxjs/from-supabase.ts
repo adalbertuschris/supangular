@@ -1,10 +1,10 @@
-import { Observable, from, map } from 'rxjs';
+import { Observable, from, map, tap } from 'rxjs';
 import { mapObjectPropsToCamelCase } from '../utils/supabase-object.util';
 import { SupabaseConverterOptions } from '../models/supabase-converter-options';
 
 // TODO Write tests
 
-interface SupabaseResponse<T> {
+export interface SupabaseResponse<T> {
   count: number;
   data: T;
 }
@@ -30,6 +30,7 @@ export function fromSupabase<R>(
   options?: { converterOptions?: SupabaseConverterOptions }
 ): Observable<R> {
   return from(input.throwOnError()).pipe(
+    tap((response) => console.log('response', response)),
     map((response: SupabaseResponse<any>) => mapSupabaseResponse(response, options?.converterOptions))
   );
 }

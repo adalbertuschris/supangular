@@ -1,0 +1,26 @@
+<form *ngIf="(profile$ | async) as profile" [formGroup]="updateProfileForm" (ngSubmit)="updateProfile(profile.id)"
+    class="form-widget">
+    <!-- <div>
+        <label for="email">Email</label>
+        <input id="email" type="text" [value]="profile.email" disabled />
+    </div> -->
+    <div>
+        <label for="firstName">First name</label>
+        <input formControlName="firstName" id="firstName" type="text" />
+    </div>
+
+    <div>
+        <label for="lastName">Last name</label>
+        <input formControlName="lastName" id="lastName" type="text" />
+    </div>
+
+    <div>
+        <button type="submit" class="button primary block" [disabled]="isLoading$ | async">
+            {{ (isLoading$ | async) ? 'Loading ...' : 'Update' }}
+        </button>
+    </div>
+</form>
+
+<div>
+    <button class="button block" (click)="signOut()">Sign Out</button>
+</div>
