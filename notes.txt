@@ -1,0 +1,14 @@
+TODO
+
+styles
+- reset
+- set global styles
+
+shared
+- button
+- icon
+
+- check models
+- supabse utils
+- write tests
+- nx

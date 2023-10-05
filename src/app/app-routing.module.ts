@@ -1,11 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginPageComponent } from './modules/auth/pages/login-page/login-page.component';
-import { RegisterPageComponent } from './modules/auth/pages/register-page/register-page.component';
-import { authGuard } from './modules/auth/guards/auth.guard';
-import { HomePageComponent } from './pages/home-page/home-page.component';
-import { loginGuard } from './modules/auth/guards/login.guard';
-import { ProfilesModule } from './modules/profiles/profiles.module';
+import { HomePageComponent } from './ui/main/pages/home-page/home-page.component';
+import { authGuard, loginGuard } from '@auth';
 
 const routes: Routes = [
   {
@@ -15,19 +11,19 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadComponent: () => import('./modules/auth/pages/login-page/login-page.component').then(() => LoginPageComponent),
+    loadComponent: () => import('./ui/auth/pages/login-page/login-page.component').then((m) => m.LoginPageComponent),
     canActivate: [loginGuard]
   },
-  {
-    path: 'sign-up',
-    loadComponent: () =>
-      import('./modules/auth/pages/register-page/register-page.component').then(() => RegisterPageComponent),
-    canActivate: [loginGuard]
-  },
+  // {
+  //   path: 'sign-up',
+  //   loadComponent: () =>
+  //     import('./ui/auth/pages/register-page/register-page.component').then((m) => m.RegisterPageComponent),
+  //   canActivate: [loginGuard]
+  // },
   {
     path: 'my-profile',
-    loadChildren: () => import('./modules/profiles/profiles.module').then(() => ProfilesModule),
-    canActivate: [authGuard]
+    loadChildren: () => import('./ui/profiles/profiles.module').then((m) => m.ProfilesModule),
+    canMatch: [authGuard]
   },
   {
     path: '**',

@@ -1,0 +1,68 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .card {
+    width: 300px;
+    margin: auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+
+    &-body {
+      height: 100%;
+      flex: 1;
+      padding: 20px;
+    }
+  }
+
+  .form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &-group {
+      &:not(:last-of-type) {
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    &-label {
+      margin-bottom: 0.5rem;
+      display: block;
+      font-weight: bold;
+    }
+
+    &-control {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    &-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 2rem;
+    }
+
+    &-button {
+      width: 100%;
+      padding: 10px;
+      background-color: #3f51b5;
+      color: white;
+      border-radius: 4px;
+      border: 0;
+      cursor: pointer;
+    }
+  }
+}

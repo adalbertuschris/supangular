@@ -1,0 +1,19 @@
+<div class="card">
+    <div class="card-header">
+        <h1>Supabase + Angular</h1>
+        <p class="description">Sign in via magic link with your email below</p>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="signInForm" (ngSubmit)="onSubmit()" class="form">
+            <div class="form-group">
+                <label class="form-label" for="email">Email</label>
+                <input id="email" class="form-control" formControlName="email" type="email" placeholder="Your email" />
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="form-button" [disabled]="(isLoading$ | async)">
+                    {{ (isLoading$ | async) ? 'Sending' : 'Send magic link' }}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

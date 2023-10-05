@@ -1,0 +1,8 @@
+<button *ngIf="(isAuth$ | async) === false" type="button" class="button" (click)="login()">Login</button>
+
+<ng-container *ngIf="(userContext$ | async) as userContext">
+    <h1 class="header">Hello {{ userContext.firstName }}</h1>
+    <button type="button" class="button" (click)="goToMyProfile()">My profile</button>
+</ng-container>
+
+<button *ngIf="isAuth$ | async" class="button" (click)="signOut()">Sign Out</button>
