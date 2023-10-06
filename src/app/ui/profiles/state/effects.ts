@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, exhaustMap, map, of, switchMap, take } from 'rxjs';
+import { catchError, exhaustMap, map, of, switchMap, take, tap } from 'rxjs';
 import { ProfileActions, ProfileApiActions } from './actions';
 import { AuthService } from '@auth';
 import { ProfileDataService } from '@data/profiles';
@@ -37,9 +38,21 @@ export class ProfileEffects {
     );
   });
 
+  updateProfileSuccess = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(ProfileApiActions.updateProfileSuccess),
+        tap(() => this.authService.reloadUserContext()),
+        tap(() => this.router.navigate(['/']))
+      );
+    },
+    { dispatch: false }
+  );
+
   constructor(
     private readonly actions$: Actions,
     private readonly profileDataService: ProfileDataService,
-    private readonly authService: AuthService
+    private readonly authService: AuthService,
+    private readonly router: Router
   ) {}
 }

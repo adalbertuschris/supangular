@@ -10,6 +10,7 @@ export const AuthActions = createActionGroup({
     'Sign in via login link': props<{ email: string }>(),
     'Sign out': emptyProps(),
     'Load user context': props<{ userId: string }>(),
+    'Reload user context': emptyProps(),
     'Check auth': emptyProps()
   }
 });
