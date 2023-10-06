@@ -37,4 +37,8 @@ export class AuthService {
   signOut(): void {
     this.store.dispatch(AuthActions.signOut());
   }
+
+  reloadUserContext(): void {
+    this.store.dispatch(AuthActions.reloadUserContext());
+  }
 }

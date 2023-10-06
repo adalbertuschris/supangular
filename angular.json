@@ -32,7 +32,11 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "websocket",
+              "@supabase/node-fetch"
+           ]
           },
           "configurations": {
             "development": {

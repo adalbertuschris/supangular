@@ -35,6 +35,13 @@ export const authReducer = createReducer(
       isSigningIn: false
     })
   ),
+  on(
+    AuthApiActions.signInFailure,
+    (state): AuthState => ({
+      ...state,
+      isSigningIn: false
+    })
+  ),
   on(AuthActions.checkAuth, (state): AuthState => ({ ...state, isCheckingAuth: true })),
   on(
     AuthApiActions.userAuthenticated,

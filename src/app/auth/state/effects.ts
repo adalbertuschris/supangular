@@ -41,8 +41,24 @@ export class AuthEffects {
       ofType(AuthApiActions.userAuthenticated),
       concatLatestFrom(() => this.store.select(selectUserContext)),
       filter(([, userContext]) => !userContext),
-      exhaustMap(([{ session }]) =>
-        this.authDataService.getUserContext(session.user.id).pipe(
+      map(([{ session }]) => AuthActions.loadUserContext({ userId: session.user.id }))
+    );
+  });
+
+  reloadUserContext = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(AuthActions.reloadUserContext),
+      concatLatestFrom(() => this.store.select(selectUserContext)),
+      filter(([, userContext]) => !!userContext),
+      map(([, { id }]) => AuthActions.loadUserContext({ userId: id }))
+    );
+  });
+
+  loadUserContext = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(AuthActions.loadUserContext),
+      exhaustMap(({ userId }) =>
+        this.authDataService.getUserContext(userId).pipe(
           map((userContext) => AuthApiActions.loadUserContextSuccess({ userContext })),
           catchError((error) => of(AuthApiActions.loadUserContextFailure({ error })))
         )

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '@auth';
 
 @Component({
@@ -14,7 +14,7 @@ export class LoginPageComponent {
   isLoading$ = this.authService.isSigningIn$;
 
   signInForm = this.formBuilder.group({
-    email: ''
+    email: ['', [Validators.required, Validators.email]]
   });
 
   constructor(
