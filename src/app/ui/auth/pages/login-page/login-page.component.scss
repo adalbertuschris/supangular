@@ -44,6 +44,10 @@
       box-sizing: border-box;
     }
 
+    .validation-error {
+      color: red;
+    }
+
     &-actions {
       display: flex;
       justify-content: flex-end;
@@ -58,6 +62,10 @@
       border-radius: 4px;
       border: 0;
       cursor: pointer;
+
+      &:disabled {
+        opacity: 0.5;
+      }
     }
   }
 }

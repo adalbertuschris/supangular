@@ -8,12 +8,29 @@
             <div class="form-group">
                 <label class="form-label" for="email">Email</label>
                 <input id="email" class="form-control" formControlName="email" type="email" placeholder="Your email" />
+                <ng-container
+                    *ngTemplateOutlet="emailValidationErrors; context: {$implicit: signInForm.get('email')}"></ng-container>
             </div>
+
             <div class="form-actions">
-                <button type="submit" class="form-button" [disabled]="(isLoading$ | async)">
+                <button type="submit" class="form-button" [disabled]="signInForm.invalid || (isLoading$ | async)">
                     {{ (isLoading$ | async) ? 'Sending' : 'Send magic link' }}
                 </button>
             </div>
         </form>
     </div>
 </div>
+
+<!-- Temporary solution -->
+<!-- TODO add form-field shared component to handle validation errors -->
+<ng-template let-control #emailValidationErrors>
+    <span class="validation-error" *ngIf="control.touched && control.errors">
+        <ng-container *ngIf="control.errors['required']">
+            This field is required
+        </ng-container>
+
+        <ng-container *ngIf="control.errors['email']">
+            Incorrect email
+        </ng-container>
+    </span>
+</ng-template>

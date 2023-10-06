@@ -10,6 +10,8 @@
             <div class="form-group">
                 <label for="firstName" class="form-label">First name</label>
                 <input formControlName="firstName" id="firstName" type="text" class="form-control" />
+                <ng-container
+                    *ngTemplateOutlet="firstNameValidationErrors; context: {$implicit: profileForm.get('firstName')}"></ng-container>
             </div>
 
             <div class="form-group">
@@ -18,10 +20,20 @@
             </div>
 
             <div class="form-actions">
-                <button type="submit" class="form-button" [disabled]="isLoading$ | async">
+                <button type="submit" class="form-button" [disabled]="profileForm.invalid || (isLoading$ | async)">
                     {{ (isLoading$ | async) ? 'Saving ...' : 'Update' }}
                 </button>
             </div>
         </form>
     </div>
 </div>
+
+<!-- Temporary solution -->
+<!-- TODO add form-field shared component to handle validation errors -->
+<ng-template let-control #firstNameValidationErrors>
+    <span class="validation-error" *ngIf="control.touched && control.errors">
+        <ng-container *ngIf="control.errors['required']">
+            This field is required
+        </ng-container>
+    </span>
+</ng-template>

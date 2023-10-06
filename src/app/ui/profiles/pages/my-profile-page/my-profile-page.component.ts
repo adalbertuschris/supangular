@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Profile } from '../../models/profile';
 import { ProfileService } from '../../services/profile.service';
@@ -16,7 +16,7 @@ export class MyProfilePageComponent implements OnInit {
   profile$: Observable<Profile> = this.profileService.profile$;
 
   profileForm = this.formBuilder.group({
-    firstName: '',
+    firstName: ['', Validators.required],
     lastName: ''
   });
 
