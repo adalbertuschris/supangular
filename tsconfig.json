@@ -41,6 +41,12 @@
       ],
       "@data/*": [
         "./src/app/data/*"
+      ],
+      "@g11n": [
+        "./src/app/g11n"
+      ],
+      "@ui/shared": [
+        "./src/app/ui/shared"
       ]
     }
   },

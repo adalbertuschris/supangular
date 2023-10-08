@@ -9,6 +9,8 @@ import { DataModule } from './data/data.module';
 import { HomePageComponent } from './ui/main/pages/home-page/home-page.component';
 import { AuthEffects, authReducer } from '@auth';
 import { AppInitService } from '@core';
+import { G11nModule } from '@g11n';
+import { ButtonComponent } from '@ui/shared';
 
 export function appInitializer(appInitService: AppInitService): () => void {
   return () => appInitService.init();
@@ -22,7 +24,9 @@ export function appInitializer(appInitService: AppInitService): () => void {
     DataModule,
     StoreModule.forRoot({ auth: authReducer }, {}),
     EffectsModule.forRoot([AuthEffects]),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    G11nModule,
+    ButtonComponent
   ],
   providers: [
     {

@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 import { AuthService } from '@auth';
+import { ButtonComponent } from '@ui/shared';
 
 @Component({
   selector: 'vt-login-page',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, TranslateModule, ButtonComponent],
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss']
 })

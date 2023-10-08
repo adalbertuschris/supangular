@@ -1,8 +1,10 @@
-<button *ngIf="(isAuth$ | async) === false" type="button" class="button" (click)="login()">Login</button>
+<button vt-button *ngIf="(isAuth$ | async) === false" type="button" (click)="signIn()">
+    {{ 'HOME.SIGN_IN' | translate }}
+</button>
 
 <ng-container *ngIf="(userContext$ | async) as userContext">
-    <h1 class="header">Hello {{ userContext.firstName }}</h1>
-    <button type="button" class="button" (click)="goToMyProfile()">My profile</button>
+    <h1 class="header">{{ 'HOME.HELLO' | translate }} {{ userContext.firstName }}</h1>
+    <button vt-button type="button" (click)="goToMyProfile()">{{ 'HOME.MY_PROFILE' | translate }}</button>
 </ng-container>
 
-<button *ngIf="isAuth$ | async" class="button" (click)="signOut()">Sign Out</button>
+<button vt-button *ngIf="isAuth$ | async" (click)="signOut()">{{ 'HOME.SIGN_OUT' | translate }}</button>
