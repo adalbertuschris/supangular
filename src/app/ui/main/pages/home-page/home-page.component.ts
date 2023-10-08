@@ -16,12 +16,12 @@ export class HomePageComponent {
     private readonly router: Router
   ) {}
 
-  login(): void {
-    this.router.navigate(['/login']);
-  }
-
   goToMyProfile(): void {
     this.router.navigate(['/my-profile']);
+  }
+
+  signIn(): void {
+    this.router.navigate(['/login']);
   }
 
   signOut(): void {

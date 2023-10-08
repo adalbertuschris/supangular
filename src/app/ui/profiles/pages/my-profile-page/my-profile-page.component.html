@@ -1,27 +1,28 @@
 <div class="card">
     <div class="card-header">
-        <h1>My profile</h1>
-        <p class="description">Update your profile</p>
+        <h1>{{ 'PROFILE.TITLE' | translate }}</h1>
+        <p class="description">{{ 'PROFILE.DESCRIPTION' | translate }}</p>
     </div>
     <div class="card-body">
         <form *ngIf="(profile$ | async) as profile" [formGroup]="profileForm" (ngSubmit)="updateProfile(profile.id)"
             class="form">
 
             <div class="form-group">
-                <label for="firstName" class="form-label">First name</label>
+                <label for="firstName" class="form-label">{{ 'PROFILE.FIRST_NAME' | translate }}</label>
                 <input formControlName="firstName" id="firstName" type="text" class="form-control" />
                 <ng-container
                     *ngTemplateOutlet="firstNameValidationErrors; context: {$implicit: profileForm.get('firstName')}"></ng-container>
             </div>
 
             <div class="form-group">
-                <label for="lastName" class="form-label">Last name</label>
+                <label for="lastName" class="form-label">{{ 'PROFILE.LAST_NAME' | translate }}</label>
                 <input formControlName="lastName" id="lastName" type="text" class="form-control" />
             </div>
 
             <div class="form-actions">
-                <button type="submit" class="form-button" [disabled]="profileForm.invalid || (isLoading$ | async)">
-                    {{ (isLoading$ | async) ? 'Saving ...' : 'Update' }}
+                <button vt-button type="submit" class="form-button"
+                    [disabled]="profileForm.invalid || (isLoading$ | async)">
+                    {{ ((isLoading$ | async) ? 'GENERAL.SAVING' : 'GENERAL.UPDATE') | translate }}
                 </button>
             </div>
         </form>
@@ -33,7 +34,7 @@
 <ng-template let-control #firstNameValidationErrors>
     <span class="validation-error" *ngIf="control.touched && control.errors">
         <ng-container *ngIf="control.errors['required']">
-            This field is required
+            {{ 'VALIDATION.REQUIRED' | translate }}
         </ng-container>
     </span>
 </ng-template>

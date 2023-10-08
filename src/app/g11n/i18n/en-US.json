@@ -1,0 +1,24 @@
+{
+  "GENERAL.SAVING": "Saving",
+  "GENERAL.SENDING": "Sending",
+  "GENERAL.UPDATE": "Update",
+
+  "HOME.HELLO": "Hello",
+  "HOME.MY_PROFILE": "My profile",
+  "HOME.SIGN_IN": "Sign in",
+  "HOME.SIGN_OUT": "Sign out",
+
+  "LOGIN.TITLE": "Supabase + Angular",
+  "LOGIN.DESCRIPTION": "Sign in via magic link with your email below",
+  "LOGIN.EMAIL": "Email",
+  "LOGIN.SEND_MAGIC_LINK": "Send magic link",
+  "LOGIN.EMAIL_PLACEHOLDER": "Your email",
+
+  "PROFILE.TITLE": "My profile",
+  "PROFILE.DESCRIPTION": "Update your profile",
+  "PROFILE.FIRST_NAME": "First name",
+  "PROFILE.LAST_NAME": "Last name",
+
+  "VALIDATION.EMAIL": "Incorrect email",
+  "VALIDATION.REQUIRED": "This field is required"
+}
