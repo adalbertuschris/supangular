@@ -171,7 +171,7 @@ describe('SupabaseObjectUtil', () => {
       expect(mappedObj).toEqual(expectedResult);
     });
 
-    it('skip particular prop names and use custom map during convertion from snake_case to camelCase', () => {
+    it('skip particular prop names and use custom map during convertion from camelCase to snake_case', () => {
       const obj = {
         firstName1: 'FN1',
         firstName22: 'FN22',
