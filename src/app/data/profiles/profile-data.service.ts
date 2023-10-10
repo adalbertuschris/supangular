@@ -3,8 +3,8 @@ import { SupabaseClient } from '@supabase/supabase-js';
 import { Observable } from 'rxjs';
 import { ProfileUpsertRequest } from './models/profile-upsert-request';
 import { ProfileResponse } from './models/profile-response';
-import { SupabaseResponse, fromSupabase } from '../core/providers/remote/supabase';
-import { supabasePayload } from '../core/providers/remote/supabase';
+import { SupabaseResponse, fromSupabase } from '../core/providers/supabase';
+import { supabasePayload } from '../core/providers/supabase';
 
 type ProfileSupabaseResponse = {
   id: string;

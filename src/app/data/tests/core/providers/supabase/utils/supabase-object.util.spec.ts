@@ -1,4 +1,7 @@
-import { mapObjectPropsToCamelCase, mapObjectPropsToSnakeCase } from './supabase-object.util';
+import {
+  mapObjectPropsToCamelCase,
+  mapObjectPropsToSnakeCase
+} from '@data/core/providers/supabase/utils/supabase-object.util';
 
 // TODO write tests for scenarios:
 // skipKeys

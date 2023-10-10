@@ -1,4 +1,4 @@
-import { SupabaseAuthError, SupabaseError } from '../providers/remote/supabase';
+import { SupabaseAuthError, SupabaseError } from '../providers/supabase';
 
 export type ApiError = SupabaseError;
 

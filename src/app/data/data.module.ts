@@ -1,7 +1,7 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { httpProviders } from './core/providers/remote/http/providers';
-import { supabaseProviders } from './core/providers/remote/supabase/providers';
+import { httpProviders } from './core/providers/http/providers';
+import { supabaseProviders } from './core/providers/supabase/providers';
 
 @NgModule({
   providers: [...httpProviders, ...supabaseProviders],

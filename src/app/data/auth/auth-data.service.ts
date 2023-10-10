@@ -3,7 +3,7 @@ import { AuthSession, SupabaseClient } from '@supabase/supabase-js';
 import { Observable, map } from 'rxjs';
 import { UserContextResponse } from './models/user-context-response';
 import { SignInResponse } from './models/sign-in-response';
-import { SupabaseResponse, fromSupabase, fromSupabaseAuth } from '../core/providers/remote/supabase';
+import { SupabaseResponse, fromSupabase, fromSupabaseAuth } from '../core/providers/supabase';
 
 type UserContextSupabaseResponse = {
   id: string;
